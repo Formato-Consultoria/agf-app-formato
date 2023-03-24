@@ -10,4 +10,32 @@
     body {
         @apply bg-background
     }
+
+    .scrollbar-none::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+@layer utilities {
+    .sidebar-arrow-t:before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 30px;
+      border: solid;
+      border-width: 0 5px 7px 5px;
+      border-color: transparent transparent #761286 transparent;
+    }
+
+    .style-li-l:before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        border: solid;
+        border-width: 3px;
+        border-color: white;
+        border-radius: 999px;
+
+        transition: display .5s ease-out;
+    }
 }

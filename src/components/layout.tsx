@@ -1,0 +1,47 @@
+import { ReactNode, useState } from 'react';
+import SideBar from './sidebar';
+import TopBar from './topbar';
+
+import cx from 'clsx';
+import { SidebarContext } from '@/context/sidebar-context';
+import useSidebar from '@/hooks/useSidebar';
+
+interface PropsLayout {
+    className?: string
+    children: ReactNode,
+}
+
+const Main = ({ children }: PropsLayout) => {
+    const { isOpen } = useSidebar();
+  
+    return (
+      <main
+        className={cx("w-auto", (isOpen ? "ml-[338px]" : "ml-[130px]"), "min-h-full h-auto transition-width duration-500 ease bg-zinc-200/5 flex flex-col gap-5 py-5 pr-4")}
+      >
+        {children}
+      </main>
+    );
+}
+
+const Layout = ({ children, className }: PropsLayout) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    return (
+        <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
+            <div className={cx(className)}>
+                <TopBar />
+                <SideBar />
+                <Main>
+                    {children}
+                </Main>
+                {/* <Footer /> */}
+            </div>
+        </SidebarContext.Provider>
+    )
+}
+
+export default Layout;
