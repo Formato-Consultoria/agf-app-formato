@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout className={"w-full h-screen"}>
+    <Layout className={"w-full h-auto"}>
       <Component {...pageProps} />
     </Layout>
   )

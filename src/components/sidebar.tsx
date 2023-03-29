@@ -38,11 +38,11 @@ const SideBar = () => {
     }, [isOpen]);
 
     return (
-        <aside className={cx("sidebar-arrow-t", isOpen ? "w-72" : "w-20", "hover:w-72 transition-width duration-500 ease h-full fixed top-0 left-0 ml-[20px] mt-16 bg-primary rounded-t-md group overflow-auto scrollbar-none")}>
+        <aside className={cx("sidebar-arrow-t", isOpen ? "w-72" : "w-20", "hover:w-72 transition-width duration-500 ease h-full fixed top-0 left-0 ml-[20px] mt-16 bg-background/90 backdrop-brightness-200 backdrop-blur-sm primary rounded-t-md group overflow-auto scrollbar-none z-50")}>
             <ul className={"h-auto w-full py-4 flex flex-col"}>
                 <li className={"w-auto mx-5 py-4 inline-flex relative"}>
                     <Link
-                        href={"/dashboard"}
+                        href={"/"}
                         className={cx(router.pathname === "/dashboard" && "style-li-l", "inline-flex items-center gap-2")}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="rgb(255 255 255)" viewBox="0 0 256 256"><path d="M102,109.5v-72a6,6,0,0,0-8-5.66A102,102,0,0,0,27.7,146.59a6,6,0,0,0,8.9,4.11l62.4-36A6,6,0,0,0,102,109.5ZM90,106l-51.66,29.8Q38,131.91,38,128A90.1,90.1,0,0,1,90,46.42ZM216.57,77.45c-.08-.16-.16-.32-.25-.47a3,3,0,0,0-.27-.42A102,102,0,0,0,128,26a6,6,0,0,0-6,6v93L42.2,171.46a6,6,0,0,0-2.15,8.22A102,102,0,0,0,230,128,101.41,101.41,0,0,0,216.57,77.45ZM134,38.2a90,90,0,0,1,68.76,39.74L134,118ZM128,218a90.48,90.48,0,0,1-74.38-39.31l77.31-45,.17-.1,77.67-45.24A90,90,0,0,1,128,218Z"></path></svg>
@@ -51,13 +51,13 @@ const SideBar = () => {
                             className={cx(
                                 "w-5/6",
                                 "group-hover:flex", (isOpen ? "flex" : "hidden"),
-                                "transition-display duration-300 ease-in-out text-white/80 hover:text-white uppercase font-medium"
-                            )}
+                                "text-white/80 hover:text-white uppercase font-medium"
+                            )} // transition-display duration-300 ease-in-out
                         >Painel</p>
                     </Link>
                 </li>
 
-                <li className={"w-auto mx-5 py-4 inline-flex relative"}>
+                {/* <li className={"w-auto mx-5 py-4 inline-flex relative"}>
                     <Link
                         href={"/metrics"}
                         className={cx(router.pathname === "/metrics" && "style-li-l", "inline-flex items-center gap-2 relative")}
@@ -72,7 +72,7 @@ const SideBar = () => {
                             )}
                         >Metricas</p>
                     </Link>
-                </li>
+                </li> */}
 
                 <li className={"w-auto mx-5 py-4 inline-flex flex-col relative"}>
                     <button
@@ -85,53 +85,53 @@ const SideBar = () => {
                             className={cx(
                                 "w-5/6 ml-2",
                                 "group-hover:flex", (isOpen ? "inline-flex" : "hidden"),
-                                "transition-width duration-300 ease-in-out text-white/80 hover:text-white uppercase font-medium"
-                            )}
+                                "text-white/80 hover:text-white uppercase font-medium"
+                            )} // transition-width duration-300 ease-in-out
                             sidebar-toggle-item
                         >Funções e Operações</p>
                         <svg sidebar-toggle-item className={cx("group-hover:flex", isOpen ? "inline-flex" : "hidden")} width="22" height="22" fill="rgb(255 255 255)" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
 
                     <ul className={cx(isOpenedList ? "inline-flex" : "hidden", "py-2 space-y-2 flex-col")}>
-                        <li className={cx(!isOpen && "pt-4 inline-flex", "group-hover:mx-0 group-hover:py-0")}>
+                        <li className={cx(!isOpen && "pt-4 inline-flex transition delay-300", "group-hover:mx-0 group-hover:py-0 transition group-hover:delay-300")}>
                             <button
                                 className={cx(
                                     "font-mediumn",
                                     "group-hover:pl-7 group-hover:text-sm",
-                                    (isOpen ? "pl-7 text-sm" : "text-lg"),
+                                    (isOpen ? "pl-7 text-sm" : "text-lg text-center"),
                                     "inline-flex items-center w-full text-white/75 group hover:text-white/95"
                                 )}
                             >
-                                <span className={cx(isOpen ? "inline-flex" : "hidden", "group-hover:inline-flex")}>Download</span>
-                                <span className={cx(!isOpen ? "inline-flex" : "hidden", "group-hover:hidden")}>D</span>
+                                <span className={cx(isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:inline-flex")}>Download</span>
+                                <span className={cx(!isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:hidden")}>D</span>
                             </button>
                         </li>
 
-                        <li className={cx(!isOpen && "pt-4 inline-flex", "group-hover:mx-0 group-hover:py-0")}>
+                        <li className={cx(!isOpen && "pt-4 inline-flex transition delay-300", "group-hover:mx-0 group-hover:py-0 transition group-hover:delay-300")}>
                             <button
                                 className={cx(
                                     "font-mediumn",
                                     "group-hover:pl-7 group-hover:text-sm",
-                                    (isOpen ? "pl-7 text-sm" : "text-lg"),
+                                    (isOpen ? "pl-7 text-sm" : "text-lg text-center"),
                                     "inline-flex items-center w-full text-white/75 group hover:text-white/95"
                                 )}
                             >
-                                <span className={cx(isOpen ? "inline-flex" : "hidden", "group-hover:inline-flex")}>Exportar para PDF</span>
-                                <span className={cx(!isOpen ? "inline-flex" : "hidden", "group-hover:hidden")}>EPDF</span>
+                                <span className={cx(isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:inline-flex")}>Exportar para PDF</span>
+                                <span className={cx(!isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:hidden")}>EPDF</span>
                             </button>
                         </li>
 
-                        <li className={cx(!isOpen && "pt-4 inline-flex", "group-hover:mx-0 group-hover:py-0")}>
+                        <li className={cx(!isOpen && "pt-4 inline-flex transition delay-300", "group-hover:mx-0 group-hover:py-0 transition group-hover:delay-300")}>
                             <button
                                 className={cx(
                                     "font-mediumn",
                                     "group-hover:pl-7 group-hover:text-sm",
-                                    (isOpen ? "pl-7 text-sm" : "text-lg"),
+                                    (isOpen ? "pl-7 text-sm" : "text-lg text-center"),
                                     "inline-flex items-center w-full text-white/75 group hover:text-white/95"
                                 )}
                             >
-                                <span className={cx(isOpen ? "inline-flex" : "hidden", "group-hover:inline-flex")}>Exportar para PowerPoint</span>
-                                <span className={cx(!isOpen ? "inline-flex" : "hidden", "group-hover:hidden")}>EPP</span>
+                                <span className={cx(isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:inline-flex")}>Exportar para PowerPoint</span>
+                                <span className={cx(!isOpen ? "inline-flex delay-300" : "hidden", "group-hover:delay-300 group-hover:hidden")}>EPP</span>
                             </button>
                         </li>
                     </ul>

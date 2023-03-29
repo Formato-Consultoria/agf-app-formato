@@ -16,7 +16,7 @@ const Main = ({ children }: PropsLayout) => {
   
     return (
       <main
-        className={cx("w-auto", (isOpen ? "ml-[338px]" : "ml-[130px]"), "min-h-full h-auto transition-width duration-500 ease bg-zinc-200/5 flex flex-col gap-5 py-5 pr-4")}
+        className={cx("w-auto", (isOpen ? "ml-[338px]" : "ml-[130px]"), "min-h-full h-auto transition-width duration-500 ease flex flex-col gap-5 py-2 pr-2")}
       >
         {children}
       </main>
