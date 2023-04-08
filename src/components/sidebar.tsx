@@ -57,7 +57,7 @@ const SideBar = () => {
                     </Link>
                 </li>
 
-                {/* <li className={"w-auto mx-5 py-4 inline-flex relative"}>
+                <li className={"w-auto mx-5 py-4 inline-flex relative"}>
                     <Link
                         href={"/metrics"}
                         className={cx(router.pathname === "/metrics" && "style-li-l", "inline-flex items-center gap-2 relative")}
@@ -72,7 +72,7 @@ const SideBar = () => {
                             )}
                         >Metricas</p>
                     </Link>
-                </li> */}
+                </li>
 
                 <li className={"w-auto mx-5 py-4 inline-flex flex-col relative"}>
                     <button
