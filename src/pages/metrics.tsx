@@ -4,13 +4,13 @@ import { HotTable, HotColumn } from "@handsontable/react";
 
 export default function metrics({ datas }: any) {
     // const [dados, setDados] = useState([])
-    const hotTable = useRef<Handsontable>();
+    // const hotTable = useRef<Handsontable>();
 
-    useEffect(() => {
-        if (datas.length > 0) {
-          hotTable.current?.loadData(datas)
-        }
-    }, [datas])
+    // useEffect(() => {
+    //     if (datas.length > 0) {
+    //       hotTable.current?.loadData(datas)
+    //     }
+    // }, [datas])
 
     return (
       <>

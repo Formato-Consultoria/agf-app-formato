@@ -87,9 +87,8 @@ const SideBar = () => {
                                 "group-hover:flex", (isOpen ? "inline-flex" : "hidden"),
                                 "text-white/80 hover:text-white uppercase font-medium"
                             )} // transition-width duration-300 ease-in-out
-                            sidebar-toggle-item
                         >Funções e Operações</p>
-                        <svg sidebar-toggle-item className={cx("group-hover:flex", isOpen ? "inline-flex" : "hidden")} width="22" height="22" fill="rgb(255 255 255)" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        <svg className={cx("group-hover:flex", isOpen ? "inline-flex" : "hidden")} width="22" height="22" fill="rgb(255 255 255)" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
 
                     <ul className={cx(isOpenedList ? "inline-flex" : "hidden", "py-2 space-y-2 flex-col")}>
