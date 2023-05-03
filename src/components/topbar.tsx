@@ -1,12 +1,29 @@
+import { auth, fnLogout } from '@/firebase/authFirebase';
+
 import useSidebar from '@/hooks/useSidebar';
 import Image from 'next/image';
-import { useContext } from 'react';
+import { useContextAuth } from '@/hooks/useAuthUser';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const TopBar = () => {
     const { isOpen, toggleSidebar } = useSidebar();
+    const { isAuthenticated, setIsAuthenticated } = useContextAuth();
+    const router = useRouter();
+
+    const Logout = () => {
+        fnLogout();
+        setIsAuthenticated(false);
+    }
+
+    useEffect(() => {
+        if(!isAuthenticated) {
+            router.push("/login");
+        }
+    }, [isAuthenticated])
 
     return (
-        <header className={"w-full h-16 sm:px-10 bg-transparent flex items-center justify-between"}>
+        <header className={"w-full h-16 sm:px-10 bg-transparent flex items-center"}>
             <button
                 onClick={toggleSidebar}
                 className={"fixed"}
@@ -17,12 +34,18 @@ const TopBar = () => {
             }</button>
 
             <Image
-                className={"select-none ml-auto"}
-                src={"/images/Logotipo_light.png"}
-                width={100}
-                height={50}
+                className={"select-none ml-24"}
+                src={"https://consultoriaformato.com.br/icons/icon_light.png"}
+                width={30}
+                height={30}
                 alt={"Logotipo formato"}
             />
+
+            <button
+                type="button"
+                className="ml-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                onClick={Logout}
+            >Sair</button>
         </header>
     )
 }

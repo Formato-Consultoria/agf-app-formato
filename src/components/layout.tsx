@@ -3,11 +3,13 @@ import SideBar from './sidebar';
 import TopBar from './topbar';
 
 import cx from 'clsx';
+
 import { SidebarContext } from '@/context/sidebar-context';
 import useSidebar from '@/hooks/useSidebar';
 
+import { PrivateRoute } from '@/context/auth-context';
+
 interface PropsLayout {
-    className?: string
     children: ReactNode,
 }
 
@@ -23,7 +25,7 @@ const Main = ({ children }: PropsLayout) => {
     );
 }
 
-const Layout = ({ children, className }: PropsLayout) => {
+const Layout = ({ children }: PropsLayout) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
@@ -31,16 +33,18 @@ const Layout = ({ children, className }: PropsLayout) => {
     };
 
     return (
-        <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
-            <div className={cx(className)}>
-                <TopBar />
-                <SideBar />
-                <Main>
-                    {children}
-                </Main>
-                {/* <Footer /> */}
-            </div>
-        </SidebarContext.Provider>
+        <PrivateRoute>
+            <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
+                <div className={"w-full h-auto"}>
+                    <TopBar />
+                    <SideBar />
+                    <Main>
+                        {children}
+                    </Main>
+                    {/* <Footer /> */}
+                </div>
+            </SidebarContext.Provider>
+        </PrivateRoute>
     )
 }
 

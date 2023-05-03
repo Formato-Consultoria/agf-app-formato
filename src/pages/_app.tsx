@@ -1,11 +1,14 @@
-import Layout from '@/components/layout'
+import { AuthProvider } from '@/context/auth-context'
+import sessionMiddleware from '@/middleware/sessionMiddleware'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout className={"w-full h-auto"}>
+    <AuthProvider>
       <Component {...pageProps} />
-    </Layout>
+    </AuthProvider>
   )
 }
+
+export default App;
