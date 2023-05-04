@@ -1,4 +1,11 @@
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
+import * as firebaseAdmin from "firebase-admin";
+
+// const credentials = require('@/config/firebase.json');
+// firebaseAdmin.initializeApp({
+//   credential: firebaseAdmin.credential.cert(credentials),
+//   databaseURL: `https://${'agf-f-ed0ba'}.firebaseio.com`,
+// });
 
 const firebaseConfig = {
   apiKey: "AIzaSyCK5ZjM9GbrRcV6uSWKlL_0jVAilfMSOWI",

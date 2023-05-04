@@ -1,5 +1,4 @@
 import { AuthProvider } from '@/context/auth-context'
-import sessionMiddleware from '@/middleware/sessionMiddleware'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 

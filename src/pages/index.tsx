@@ -9,7 +9,25 @@ import { EmbedConfig } from '@/models/embedConfig';
 import { useEffect, useState } from 'react';
 import Layout from '@/components/layout';
 import { useContextAuth } from '@/hooks/useAuthUser';
+// import { firestore } from '@/firebase/authFirebase';
+
 const configInput = require("@/config/config.json");
+
+type tIFrame = {
+  htmlString: string;
+};
+
+const IFrame: React.FC<tIFrame> = ({ htmlString }) => {
+  return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
+};
+
+{/* <iframe
+  className={"w-full height-calc-screen"}
+  title="Report Section"
+  src="https://app.powerbi.com/view?r=eyJrIjoiYTVlMzFiZGQtNWIyZS00ODQ3LWFiZmYtYmRmMTQ3OTcyOTY0IiwidCI6ImZjNTZkOWU5LTI5NGUtNDRhMS05MjllLWUwZWU1ZTZhMGQ5MCJ9"
+  frameBorder="0"
+  allowFullScreen={true}
+></iframe> */}
 
 interface Props {
   token: string,
@@ -18,23 +36,26 @@ interface Props {
 }
 
 const Home: React.FC<Props> = ({ token, config, reportInWorkspace }) => {
-  const embedConfig = new EmbedConfig('report', config, token);
-  const [embedUrl, setEmbedUrl] = useState("");
+  const [htmlString, setHtmlString] = useState('');
+  const { userEmail } = useContextAuth();
 
-  const { embedToken, reportsDetail, type } = embedConfig;
-  const { reportId } = reportsDetail;
+  useEffect(() => {
+    const fetchConfigData = async () => {
+      // const configData = await firestore.collection("configurations").doc(userEmail).get();
 
-  // ------------------------------------------//----------------------
+      // if (configData.exists) {
+      //   const data = configData.data();
+      //   console.log(data);
+      //   // setHtmlString(data?.iframe);
+      // }
+    }
+
+    fetchConfigData();
+  }, [])
 
   return (
     <Layout>
-      <iframe
-        className={"w-full height-calc-screen"}
-        title="Report Section"
-        src="https://app.powerbi.com/view?r=eyJrIjoiYTVlMzFiZGQtNWIyZS00ODQ3LWFiZmYtYmRmMTQ3OTcyOTY0IiwidCI6ImZjNTZkOWU5LTI5NGUtNDRhMS05MjllLWUwZWU1ZTZhMGQ5MCJ9"
-        frameBorder="0"
-        allowFullScreen={true}
-      ></iframe>
+      <IFrame htmlString={htmlString} />
     </Layout>
   )
 }
@@ -65,7 +86,6 @@ export async function getServerSideProps() {
     },
   }
 }
-
 
 // {/* <PowerBIEmbed
 //   embedConfig={{
