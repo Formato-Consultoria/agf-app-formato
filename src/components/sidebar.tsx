@@ -75,7 +75,7 @@ const SideBar = () => {
                     </Link>
                 </li>
 
-                <li className={"w-auto mx-5 py-4 inline-flex flex-col relative"}>
+                {/* <li className={"w-auto mx-5 py-4 inline-flex flex-col relative"}>
                     <button
                         onClick={toggleOpenedList}
                         className="inline-flex items-center text-base font-normal group"
@@ -134,7 +134,7 @@ const SideBar = () => {
                             </button>
                         </li>
                     </ul>
-                </li>
+                </li> */}
             </ul>
         </aside>
     )

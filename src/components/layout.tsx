@@ -6,8 +6,7 @@ import cx from 'clsx';
 
 import { SidebarContext } from '@/context/sidebar-context';
 import useSidebar from '@/hooks/useSidebar';
-
-import { PrivateRoute } from '@/context/auth-context';
+import Footer from './footer';
 
 interface PropsLayout {
     children: ReactNode,
@@ -33,18 +32,16 @@ const Layout = ({ children }: PropsLayout) => {
     };
 
     return (
-        <PrivateRoute>
-            <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
-                <div className={"w-full h-auto"}>
-                    <TopBar />
-                    <SideBar />
-                    <Main>
-                        {children}
-                    </Main>
-                    {/* <Footer /> */}
-                </div>
-            </SidebarContext.Provider>
-        </PrivateRoute>
+        <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
+            <div className={"w-full h-auto"}>
+                <TopBar />
+                <SideBar />
+                <Main>
+                    {children}
+                </Main>
+                <Footer />
+            </div>
+        </SidebarContext.Provider>
     )
 }
 
