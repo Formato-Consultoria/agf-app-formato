@@ -38,8 +38,4 @@
 
         transition: display .5s ease-out;
     }
-
-    .height-calc-screen {
-        height: calc(100vh - 80px);
-    }
 }

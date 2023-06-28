@@ -21,9 +21,9 @@ const TopBar = () => {
 
             <Image
                 className={"select-none ml-auto"}
-                src={"https://consultoriaformato.com.br/icons/icon_light.png"}
-                width={30}
-                height={30}
+                src={"/images/logotipo-dark.png"}
+                width={50}
+                height={50}
                 alt={"Logotipo da formato consultoria"}
             />
         </header>
